@@ -1,0 +1,17 @@
+# Distributions Shiny Modules
+
+
+
+## Random Variable
+
+
+
+## Discrete Distributions
+
+
+
+## Continuous Distributions
+
+
+
+## Joint Probability Distribution
