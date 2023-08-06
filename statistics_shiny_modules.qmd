@@ -1,5 +1,54 @@
 # Statistics Shiny Modules
 
+What do we learn from this chapter:
+
+- What is data?
+- What are data types?
+- How we measure data?
+- How to use data in measuring data?
+- Building data measures shiny module
+
 ## Data Types
+ TODO: references
+      - https://www.turing.com/kb/statistical-data-types
+      - dates: (https://stats.stackexchange.com/questions/332688/what-type-of-data-are-dates#332701)
+      - https://pyoflife.com/understanding-probability-distributions-in-r/
+      - https://medium.com/codex/automate-the-exploratory-data-analysis-eda-to-understand-the-data-faster-not-better-2ed6ff230eed
+ 
+Data can be:
+
+- Complex (not covered in this book)
+  - Images
+  - Binary
+  - Videos
+  - Audios 
+  - Long Text
+- Simple:
+  - Categorical
+    - Nominal
+    - Ordinal
+  - Numerical
+    - Discrete
+    - Continues
+    
+    
 
 ## Data Measures
+
+### Central Tendency
+
+- Mode
+- Median
+- Mean
+- Variance
+
+### Measure of variablity
+
+### plots
+
+- Pie Chart
+- Scatter Plot
+- Bar Plot
+- Histogram
+- Scatter Plot
+- Box Plot
