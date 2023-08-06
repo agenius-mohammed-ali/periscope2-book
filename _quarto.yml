@@ -2,13 +2,22 @@ project:
   type: book
 
 book:
-  title: "my_book"
-  author: "Norah Jones"
+  title: "Building Probability and Statistics R Shiny Modules"
+  subtitle: "Using CanvasXpress and Periscope2"
+  author: "Mohammed Ali"
   date: "7/31/2023"
   chapters:
     - index.qmd
-    - intro.qmd
-    - summary.qmd
+    - introduction.qmd
+    - statistics_shiny_modules.qmd
+    - probability_shiny_modules.qmd
+    - distributions_shiny_modules.qmd
+    - data_sampling_distributions_shiny_modules.qmd
+    - simple_linear_regression_shiny_module.qmd
+    - multiple_linear_regression_shiny_module.qmd
+    - anova_shiny_module.qmd
+    - model_diagnostics.qmd
+    - bayesian_statistics_shiny_module.qmd
     - references.qmd
 
 bibliography: references.bib

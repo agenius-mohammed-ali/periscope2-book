@@ -1,0 +1,14 @@
+# Simple Linear Regression Shiny Module
+
+
+
+## SLR Model Analysis
+
+
+
+## SLR Model Prediction and Simulation
+
+
+
+## Data Transformation and Correlation
+

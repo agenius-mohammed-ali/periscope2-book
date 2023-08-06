@@ -1,9 +1,25 @@
 # Preface {.unnumbered}
 
-This is a Quarto book.
+***Rephrase later***
 
-To learn more about Quarto books visit <https://quarto.org/docs/books>.
+The proposed book is discussing how to build shiny modules and integrate them as statistical solutions for R shiny data analysis applications. 
 
-```{r}
-1 + 1
-```
+The book is targeting:
+
+-   R developer who want to learn Shiny Module and to build R packages, as the book will build an R package contains multiple statistical R shiny modules
+
+-   Statisticians who are interested in transforming their knowledge into interactive R applications in which make their work more easy
+
+-   Experienced R users who are seeking to enrich their data analysis application with statistics solutions using rich and interactive shiny and visualisation tools
+
+Based on targeted readers, the book is assuming that readers have:
+
+-   Basic R knowledge (knowing R shiny is a plus but not required)
+
+-   Basic statistical Knowledge (optional but not required)
+
+The book will discuss visual data analysis and shiny modules in new way using:
+
+-   canvasXpress R package that is considered an excellent visual data analysis tools with is rich with many chart types that make data analyst and statisticians life much easy
+
+-   Periscope dashboard to display and show the built shiny modules and how data analyst can build a full functional shiny dashboard using built modules

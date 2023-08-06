@@ -1,0 +1,15 @@
+# Multiple Linear Regression Shiny Module
+
+
+
+## MLR Model Analysis
+
+
+
+## MLR Model Prediction and Simulation
+
+
+
+## Logistic Regression
+
+
