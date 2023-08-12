@@ -8,13 +8,31 @@ What do we learn from this chapter:
 - How to use data in measuring data?
 - Building data measures shiny module
 
-## Data Types
+## Background
+
+### Data
+
+what is data?
+
+### Data Types
+
  TODO: references
       - https://www.turing.com/kb/statistical-data-types
       - dates: (https://stats.stackexchange.com/questions/332688/what-type-of-data-are-dates#332701)
       - https://pyoflife.com/understanding-probability-distributions-in-r/
       - https://medium.com/codex/automate-the-exploratory-data-analysis-eda-to-understand-the-data-faster-not-better-2ed6ff230eed
- 
+
+#### Complex Data
+
+#### Simple Data
+
+##### Categorical
+- Pie Chart
+- Bar Plot
+
+##### Numerical
+
+TODO: data types chart 
 Data can be:
 
 - Complex (not covered in this book)
@@ -33,22 +51,54 @@ Data can be:
     
     
 
-## Data Measures
+### Data Measures
 
-### Central Tendency
+#### Central Tendency
 
 - Mode
 - Median
 - Mean
 - Variance
 
-### Measure of variablity
+#### Measure of variablity
 
-### plots
+#### plots
 
-- Pie Chart
+
 - Scatter Plot
-- Bar Plot
 - Histogram
-- Scatter Plot
 - Box Plot
+
+## Shiny Modules
+
+- Data have to be wrangled 
+- This is a descriptive and analtical guide
+
+### Univariate Descriptor Module
+#### Categorical
+
+##### ID
+- Distinct values for each observation
+- No plot and no statistical description
+
+##### Factor
+Unique values less that configurable number (default = 5) and unique values does not equal number of observations
+
+##### Character
+- Anything that is neither ID nor factor
+- No plot and no statistical description (?)
+
+#### Numerical
+- Date
+- Integer
+- Double
+
+#### Requirements
+
+- Define variable type
+- Define variable measures
+- Define variable plot
+
+### Dataset Descriptor Module
+
+## Excerises
