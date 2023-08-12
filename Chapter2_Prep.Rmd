@@ -1,0 +1,47 @@
+---
+title: "Chapter 2 module prep"
+author: "Mohammed Ali"
+date: "2023-08-07"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(readr)
+library(dbdataset)
+drugs <- readr::type_convert(drugbank$drugs$general_information, guess_integer = T)
+
+get_variable_type <- function(target_variable, categories_number = 5) {
+    var_type <- "character"
+    
+    if (NROW(target_variable) == length(unique(target_variable))) {
+        var_type <- "ID"
+    } else if (length(unique(target_variable)) <= categories_number) {
+        var_type <- "factor"
+    } else if (is.numeric(target_variable)) {
+        #var_type <- "numeric" #EX: make it more specific
+        var_type <- "double"
+        if (all(drugs$average_mass == round(drugs$average_mass))) {
+            var_type <- "integer"
+        }
+    } else if (inherits(target_variable, c("Date", "POSIXt"))) {
+        var_type <- "Date"
+    }
+    
+    var_type
+}
+```
+
+## Dataset Overview
+
+- Number of observations: `r NROW(drugs)`
+- Number of variables	: `r NCOL(drugs)`
+
+- Variables types:
+```{r drugs}
+ sapply(drugs, get_variable_type)
+```
+
+## Categorical
+
+
