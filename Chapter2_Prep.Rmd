@@ -9,7 +9,19 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 library(readr)
 library(dbdataset)
+library(glue)
+library(canvasXpress)
+library(dplyr)
+library(lubridate)
+library(tidyr)
+
 drugs <- readr::type_convert(drugbank$drugs$general_information, guess_integer = T)
+
+statistical_mode <- function(x) {
+  unique_x    <- unique(x)
+  frequencies <- tabulate(match(x, unique_x))
+  unique_x[frequencies == max(frequencies)]
+}
 
 get_variable_type <- function(target_variable, categories_number = 5) {
     var_type <- "character"
@@ -39,9 +51,147 @@ get_variable_type <- function(target_variable, categories_number = 5) {
 
 - Variables types:
 ```{r drugs}
- sapply(drugs, get_variable_type)
+ # sapply(drugs, get_variable_type)
+```
+ EX: control what to display
+
+## Numerical
+
+- Variable type: `r get_variable_type(drugs$average_mass)`
+- Number of missing obs.: `r glue("{round(sum(is.na(drugs$average_mass))/NROW(drugs$average_mass), 4) * 100}%")`
+- Number of unique values: `r length(unique(na.omit(drugs$average_mass)))`
+- Median: `r round(median(drugs$average_mass, na.rm = TRUE), 2)`
+- Mode: `r round(statistical_mode(na.omit(drugs$average_mass)), 2)`
+- Variance: `r round(var(drugs$average_mass, na.rm = TRUE), 2)`
+- SD: `r round(sd(drugs$average_mass, na.rm = TRUE), 2)`
+- 1st quantile: `r quantile(drugs$average_mass, 1/4, na.rm = TRUE)`
+- 3rd quantile: `r quantile(drugs$average_mass, 3/4, na.rm = TRUE)`
+- Max: `r max(drugs$average_mass, na.rm = TRUE)`
+- Min: `r min(drugs$average_mass, na.rm = TRUE)`
+
+```{r hist}
+d <- data.frame("Average Mass" = drugs$average_mass)
+canvasXpress(
+    data=d,
+    graphType="Scatter2D",
+    histogramBins=10,
+    title="Average Mass",
+    xAxisTitle="Average Mass",
+    yAxisTitle="Count",
+    showLegend = FALSE,
+    histogramData=TRUE
+)
+
+canvasXpress(
+    data=d,
+    graphType="Scatter2D",
+    histogramBins=10,
+    title="Average Mass",
+    xAxisTitle="Average Mass",
+    yAxisTitle="Count",
+    showLegend = FALSE,
+    hideHistogram=TRUE,
+    histogramData=TRUE,
+    showHistogramDensity=TRUE
+)
 ```
 
-## Categorical
+## Date
+- Variable type: `r get_variable_type(drugs$created)`
+- Number of missing obs.: `r glue("{round(sum(is.na(drugs$created))/NROW(drugs$created), 4) * 100}%")`
+- Number of unique values: `r length(unique(na.omit(drugs$created)))`
+- Median: `r round(median(drugs$created, na.rm = TRUE), 2)`
+- Mode: `r round(statistical_mode(na.omit(drugs$created)), 2)``
+- 1st quantile: `r quantile(drugs$created, 1/4, na.rm = TRUE, type = 1)`
+- 3rd quantile: `r quantile(drugs$created, 3/4, na.rm = TRUE, type = 1)`
+- Max: `r max(drugs$created, na.rm = TRUE)`
+- Min: `r min(drugs$created, na.rm = TRUE)`
+
+```{r date_bar}
+# group by whole date
+create_date <- drugs %>% 
+    select(primary_key, created) %>%
+    group_by(created) %>% 
+    summarise(no_drugs = n()) %>% as.data.frame()
+rownames(create_date) <- create_date$created
+create_date$created   <- NULL
+canvasXpress(
+    data=create_date,
+    graphOrientation="vertical",
+    graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    title="Bar Graph Title",
+    xAxisTitle="Value"
+)
+# group by whole year
+create_date <- drugs %>%
+    mutate(created = year(created)) %>% 
+    select(primary_key, created) %>%
+    group_by(created) %>% 
+    summarise(no_drugs = n()) %>% as.data.frame()
+rownames(create_date) <- create_date$created
+create_date$created   <- NULL
+canvasXpress(
+    data=create_date,
+    graphOrientation="vertical",
+    graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    title="Bar Graph Title",
+    xAxisTitle="Value"
+)
+
+# group by month
+create_date <- drugs %>%
+    mutate(created = month(created)) %>% 
+    select(primary_key, created) %>%
+    group_by(created) %>% 
+    summarise(no_drugs = n()) %>% as.data.frame()
+rownames(create_date) <- create_date$created
+create_date$created   <- NULL
+canvasXpress(
+    data=create_date,
+    graphOrientation="vertical",
+    graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    title="Bar Graph Title",
+    xAxisTitle="Value"
+)
+```
+
+
+## Factor
+- Variable type: `r get_variable_type(drugs$state)`
+- Number of missing obs.: `r glue("{round(sum(is.na(drugs$state))/NROW(drugs$state), 4) * 100}%")`
+- Number of unique values: `r length(unique(na.omit(drugs$state)))`
+- Mode: `r statistical_mode(na.omit(drugs$state))`
+
+```{r bar}
+create_date <- drugs %>% 
+    select(primary_key, state) %>%
+    drop_na(state) %>% 
+    group_by(state) %>% 
+    summarise(no_drugs = n()) %>% as.data.frame()
+rownames(create_date) <- create_date$state
+create_date$state   <- NULL
+canvasXpress(
+    data=create_date,
+    graphOrientation="vertical",
+    graphType="Bar",
+    showLegend=FALSE,
+    smpLabelRotate=90,
+    smpTitle="Samples",
+    title="Bar Graph Title",
+    xAxisTitle="Value"
+)
+```
+
+## Character
+## ID
 
 
