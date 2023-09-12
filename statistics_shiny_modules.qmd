@@ -1,103 +1,191 @@
-# Statistics Shiny Modules
+# Feature Analyzer Module
 
-What do we learn from this chapter:
+## Objective
 
-- What is data?
-- What are data types?
-- How we measure data?
-- How to use data in measuring data?
-- Building data measures shiny module
+This module targets to identify data different features types, analyze their central tendency and dispersion, along with plotting feature distribution based on its type.
+
+So, in this chapter we will know:
+
+-   What is data?
+-   What is data features? what are its types?
+-   How to analyze data?
+-   How to use R in analyzing data?
+-   Building data measures shiny module
 
 ## Background
 
 ### Data
 
-what is data?
+Data can be defined as a collection of observations or facts that describe an event or answer a question scientifically in order to make an informative decision later (ref:https://www.wordnik.com/words/data)
 
-### Data Types
+Examples for that can be:
 
- TODO: references
-      - https://www.turing.com/kb/statistical-data-types
-      - dates: (https://stats.stackexchange.com/questions/332688/what-type-of-data-are-dates#332701)
-      - https://pyoflife.com/understanding-probability-distributions-in-r/
-      - https://medium.com/codex/automate-the-exploratory-data-analysis-eda-to-understand-the-data-faster-not-better-2ed6ff230eed
+-   Students grades in certain class/school
+-   The trees growth rate for certain forest
+-   Which goods attract customer more in certain market
 
-#### Complex Data
+Observations can be collected for a feature or more that describe that event such as:
 
-#### Simple Data
+-   Students name, gender, subject, grade, etc..
+-   Trees type, name, tall, etc..
+-   goods name, manufacture, expiration date, price, etc..
 
-##### Categorical
-- Pie Chart
-- Bar Plot
+Each feature gives an insight or different look into the data in which leads to an informative decision or answer at the end
 
-##### Numerical
+To extract feature insight we need to understand data features more:
 
-TODO: data types chart 
-Data can be:
+-   its type
+-   its characteristics
+-   its distribution
+-   and its relation with other features
 
-- Complex (not covered in this book)
-  - Images
-  - Binary
-  - Videos
-  - Audios 
-  - Long Text
-- Simple:
-  - Categorical
-    - Nominal
-    - Ordinal
-  - Numerical
-    - Discrete
-    - Continues
-    
-    
+In next section we will explore features data types as that is the key to understand everything after
+
+### Features Data Types
+
+To analyze data features and extract useful insights from it, we need to understand its nature and type to analyze it correctly and since features can be considered data descriptors, they can be anything and have any type. However, we can classify any feature type into two main groups:
+
+-   Complex Feature
+-   Simple Feature
+
+Complex feature is any feature that cannot be straight forward measured or got analyzed statistically and would need more special *data processing* and most probably it will be converted to many sub features by its own to be analyzed statistically (i.e YouTube video, binary log files. book text, etc..). Each sub-type of these features would need a very specific and different type of processing (i.e video processing, audio processing, NLP, etc..) and that is beyond the scope of this book.
+
+In contrast, Simple feature is any feature that can be directly classified, measured and got analyzed statistically (i.e height, width, age, class, etc..). This type can classified into three main sub-types:
+
+-   Categorical
+-   Discrete
+-   Continuous Figure (2.1) summarizes these types (check snippet 2.1 for generating below tree)\
+    ![Features Classifications](Images/Features_Classification.png)
+
+In next sections, we will discuss these types in more detail and discuss how to analyze them using R
+
+#### Categorical
+
+Categorical feature is data that cannot be measured with numbers and have finite number of categories or distinct groups (i.e gender, race, language, etc..), However, it still can take numeric *form* (i.e age groups, weight groups, etc..).
+
+Categorical data can be classified into two sub types:
+
+-   **Nominal** in which categories order is not important and means nothing (i.e gender, nationality, eye color, etc..)
+-   **Ordinal** in which categories order is important such as measurements in general (low, middle, high), grades (A, B, C, ..) Days of the week (Saturday, Sunday, ..)
+
+#### Discrete
+
+Discrete feature is a numeric feature with finite and countable number of values between any two values, such as:
+
+-   Store customers count per week day
+-   Employees age
+-   Weather degrees for a month
+
+#### Continues
+
+Continues feature is a numeric feature with an infinite and uncountable number of values between any two variables, such as:
+
+-   BMI of students in a school
+-   Daily rain volume in a certain area during in predefined duration
+-   Yearly volume of Nile flow
+
+### Features Central Tendency Measures and Dispersion
+
+Normally, data collections have hundreds to thousands of observations for its different features. Hence, to understand this amount of data and extract decision making supporting insights, we need to use different statistical methods to summarize data and know its dispersion. In next sections, the most famous features tendency measures and dispersion will be discussed in brief and how we can use them in `R`
+
+#### Central Tendency Measures
+
+##### Arithmetic Mean
+
+**Arithmetic Mean** is simply the data average as follow:
+
+$$
+\bar{x}  = \frac{1}{n} \sum_{i = 1}^{n}{x_i}
+$$
+
+and it can be calculated using `mean` function in `R`: Ex1: Mean height of trees is:
+
+```{r}
+mean(trees$Height)
+```
+
+##### Median
+
+Median value is the value that divides feature data into two equal sets. The median calculated differently based on observations number as follow:
+
+$$
+Y\_{ij} = \\begin{dcases\*} \\sum\_{k \\sim i}y\_{ij}, & if \$ i = j \$,\\\\ {-y\_{ij}}, & if \$ i \\ne j \$ and \$ i \\sim j \$,\\\\ 0, & otherwise. \\end{dcases\*}\
+
+$$
+
+##### Quantiles
+
+##### Mode
+
+#### Feature Dispersion
+
+##### Range
+
+##### Variance
+
+### Features Visualization
+
+-   Pie Chart
+
+-   Bar Plot
+
+#### Discrete
+
+Discreate
+
+#### Continues
 
 ### Data Measures
 
 #### Central Tendency
 
-- Mode
-- Median
-- Mean
-- Variance
+-   Mode
+-   Median
+-   Mean
+-   Variance
 
 #### Measure of variablity
 
 #### plots
 
+-   Scatter Plot
+-   Histogram
+-   Box Plot
 
-- Scatter Plot
-- Histogram
-- Box Plot
+## Module Design
 
-## Shiny Modules
-
-- Data have to be wrangled 
-- This is a descriptive and analtical guide
+-   Data have to be wrangled
+-   This is a descriptive and analytical guide
 
 ### Univariate Descriptor Module
+
 #### Categorical
 
 ##### ID
-- Distinct values for each observation
-- No plot and no statistical description
+
+-   Distinct values for each observation
+-   No plot and no statistical description
 
 ##### Factor
+
 Unique values less that configurable number (default = 5) and unique values does not equal number of observations
 
 ##### Character
-- Anything that is neither ID nor factor
-- No plot and no statistical description (?)
+
+-   Anything that is neither ID nor factor
+-   No plot and no statistical description (?)
 
 #### Numerical
-- Date
-- Integer
-- Double
+
+-   Date
+-   Integer
+-   Double
 
 #### Requirements
 
-- Define variable type
-- Define variable measures
-- Define variable plot
+-   Define variable type
+-   Define variable measures
+-   Define variable plot
 
 ### Dataset Descriptor Module
 
