@@ -90,6 +90,15 @@ Normally, data collections have hundreds to thousands of observations for its di
 
 #### Central Tendency Measures
 
+A measure of central tendency is a feature data *average/center* value. The most common measures of central tendency methods are:
+
+- The arithmetic mean
+- The median
+- Quantiles
+- The mode
+
+In next subsection, each method will be discussed briefly with an `R` example if applicable
+
 ##### Arithmetic Mean
 
 **Arithmetic Mean** is simply the data average as follow:
@@ -148,12 +157,55 @@ quantile(trees$Height)
 ```
 
 ##### Mode
+The most frequent value in feature observations called feature *mode*. Hence, the value can be calculated for any feature type.
+
+It cannot be directly calculate with `R`. Hence, a custom function to calculate mode value will be developed in the module later.
 
 #### Feature Dispersion
 
-##### Range
+Feature dispersion (or variability) is to know how feature data is spread out, to know if data is squeezed or scattered, to know if the data is homogenous or heterogeneous.
+
+The most famous methods to calculate dispersion are:
+
+- Range, 
+- Interquartile Range, 
+- Variance, 
+- and Standard Deviation. 
+
+In next subsection, each method will be discussed briefly with an `R` example if applicable
+
+##### Range and Interquartile Range
+
+- **Range** is the difference between maximum and minimum values in the dataset
+- **Interquartile Range** is the difference between *75th* and *25th* quartiles values
+
+To obtain needed values to calculate both **Range** and **Interquartile Range** using `R, use `summary` function as follow:
+
+```{r}
+summary(trees$Height)
+```
 
 ##### Variance
+
+Variance is the important and known dispersion value and symbolized as $\sigma^2$ and can be calculated as follow:
+$$
+ \sigma^2 = \sum{\frac{(x_i - \mu)^2}{N}}
+$$
+where μ is the population mean, $x_i$ is the *ith* element from the population, *N* is the population size, and Σ is just a fancy symbol that means “sum.”
+
+To calculate **variance** in `R`, use `var` function as follow
+
+```{r}
+var(trees$Height)
+```
+##### Standard Deviation
+
+Standard deviation is simply the square root of variance and to calculate it in `R`, use `sd` function as follow
+
+```{r}
+sd(trees$Height)
+sd(trees$Height) == sqrt(var(trees$Height))
+```
 
 ### Features Visualization
 
