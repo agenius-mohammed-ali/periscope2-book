@@ -98,7 +98,7 @@ $$
 \bar{x}  = \frac{1}{n} \sum_{i = 1}^{n}{x_i}
 $$
 
-and it can be calculated using `mean` function in `R`: Ex1: Mean height of trees is:
+and it can be calculated using `mean` function in `R`: Ex1: Mean height of `R` embedded dataset `tree` is:
 
 ```{r}
 mean(trees$Height)
@@ -106,12 +106,27 @@ mean(trees$Height)
 
 ##### Median
 
-Median value is the value that divides feature data into two equal sets. The median calculated differently based on observations number as follow:
+Median value is the value that divides feature data into two equal sets. The median calculated differently based on observations count as follow:
 
-$$
-Y\_{ij} = \\begin{dcases\*} \\sum\_{k \\sim i}y\_{ij}, & if \$ i = j \$,\\\\ {-y\_{ij}}, & if \$ i \\ne j \$ and \$ i \\sim j \$,\\\\ 0, & otherwise. \\end{dcases\*}\
+-   If count of observations is odd, the median will be the middle value
+-   If count of observations is even, the median will be the mean of the middle two values
 
-$$
+\$\$ \begin{equation*}
+    median = \begin{cases}
+              x_{\frac{n+1}{2}}  & \text{ if } n \text{ is odd} \\
+              \frac{1}{2}(x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}) & \text{ otherwise}
+          \end{cases}
+\end{equation*}
+
+\$\$
+
+and it can be calculated using `median` function in `R`: Ex1: Median of height of`R` embedded dataset `tree` is:
+
+```{r}
+median(trees$Height)
+```
+
+*Note: It is just happens mean and median values are the same in the used dataset but that is not usually the case*
 
 ##### Quantiles
 
