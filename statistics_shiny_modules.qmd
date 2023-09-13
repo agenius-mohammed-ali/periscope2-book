@@ -111,14 +111,16 @@ Median value is the value that divides feature data into two equal sets. The med
 -   If count of observations is odd, the median will be the middle value
 -   If count of observations is even, the median will be the mean of the middle two values
 
-\$\$ \begin{equation*}
+*Note: feature observations need to be ordered before calculating the mean. Lucky us, `R` is doing that for us*
+
+$$
+\begin{equation*}
     median = \begin{cases}
               x_{\frac{n+1}{2}}  & \text{ if } n \text{ is odd} \\
               \frac{1}{2}(x_{\frac{n}{2}} + x_{\frac{n}{2} + 1}) & \text{ otherwise}
           \end{cases}
 \end{equation*}
-
-\$\$
+$$
 
 and it can be calculated using `median` function in `R`: Ex1: Median of height of`R` embedded dataset `tree` is:
 
@@ -126,9 +128,24 @@ and it can be calculated using `median` function in `R`: Ex1: Median of height o
 median(trees$Height)
 ```
 
-*Note: It is just happens mean and median values are the same in the used dataset but that is not usually the case*
+*Note: mean and median values happen to the same in the used dataset as it symmetrically distributed around its center, but that is not usually the case*
 
 ##### Quantiles
+If we need to divide data into more partitions than just two then we use quantiles, for example: 
+
+- a *15 %-quantile* divides the data into two parts such that at least **15%** of the values are less than or equal to the quantile and at least **85%** of the values are greater than or equal to the quantile.
+
+Hence, quantiles can take any integer value from *0* to *100* (here it will called **percentiles**) or decimal value between *0* and *1* (here it will called **quintiles**)
+
+Quantiles have special values as follow:
+
+- *0 %-quantile*: the minimum data value
+- *50 %-quantile*: the median value
+- *100 %-quantile*: the maximum data value
+
+```{r}
+quantile(trees$Height)
+```
 
 ##### Mode
 
