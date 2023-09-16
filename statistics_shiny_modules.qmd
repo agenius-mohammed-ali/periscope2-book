@@ -218,6 +218,7 @@ The simplest method to visualize categorical data. It is a circle divided into s
 
 ![Frequency Barplot](Images/2_2_a_pie_chart.png)
 ![Frequency Barplot](Images/2_2_b_pie_chart.png)
+(check Ch2_2.2.R for generating the above charts)
 
 #### Bar Plot
 
@@ -234,12 +235,28 @@ Also, bars cab via stacked above each other to show cumulative distribution alon
 
 *Note: if categories count is large, bar plot became so dense and might be hard to digest*
 
-(check snippets 2_3 above charts)
+(check Ch2_2.3.R for generating the above charts)
+
+#### Histogram
+Histogram idea is very similar to **Bar Plot** but for numerical data (continues and discrete). Mainly the data is divided into multiple intervals (bins). Each bin is represented by its own bar. Bar height represents the frequency for the data within that interval
+
+Using `canvasXpress`, analyzer can control number of bins and/or bin width. Also analyzer can change the bars into dotplot to display *Relative Frequency* and many other options that can be explored bt visiting https://canvasxpress.org/examples/histogram.html
+
+The following are histogram examples (check Ch2_2.4.R for generating the below charts)
+![Histogram](Images/2_4_a_hist_plot.png)
+![Histogram Dot plot](Images/2_4_b_hist_plot.png)
+
+#### Density Plot
+Another representation for numerical data but with smother look and feel as there is no need to partition data artificially into bins. `canvasXpress` has many features to control density plot. Also analyzer can show both histogram and density plot in the same plot.
+
+The following are density plot examples (check Ch2_2.5.R for generating the below charts)
+![Histogram](Images/2_5_a_densityt_plot.png)
+![Histogram](Images/2_5_b_densityt_plot.png)
 
 ## Module Design
 
 -   Data have to be wrangled
--   This is a descriptive and analytical guide
+-   This is a descriptive and analytically guide
 
 ### Univariate Descriptor Module
 
