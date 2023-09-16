@@ -55,7 +55,7 @@ In contrast, Simple feature is any feature that can be directly classified, meas
 -   Categorical
 -   Discrete
 -   Continuous Figure (2.1) summarizes these types (check snippet 2.1 for generating below tree)\
-    ![Features Classifications](Images/Features_Classification.png)
+    ![Features Classifications](Images/2_1_Features_Classification.png)
 
 In next sections, we will discuss these types in more detail and discuss how to analyze them using R
 
@@ -208,33 +208,28 @@ sd(trees$Height) == sqrt(var(trees$Height))
 ```
 
 ### Features Visualization
+Numerical analysis is very important as discussed in previous section. However, a picture worthies more than a thousand word. Hence, presenting the feature visually in a chart helps to summarize the feature in a more easy-to-understand method to human brain. Moreover, using cavansXpress will allow us to show numerical analysis along with the visual analysis easily with the ability to switch between different charts without re-coding our chart, in addition to many other on-shelf features that were discussed in chapter 1.
 
--   Pie Chart
+In next sections, the most famous features graphical representations will be discussed in more details with examples on how to implement them using `R` and `canvasXpress` package.
 
--   Bar Plot
+#### Pie Chart
 
-#### Discrete
+#### Bar Plot
 
-Discreate
+The simplest method to visualize categorical data. Usually, each category is represented as a bar in the X-axis while bar height represents either category frequency (absolute or relative). The tallest bar is representing the *mode*.
 
-#### Continues
+![Frequency Barplot](Images/2_3_a_bar_plot.png)
+    
+However, bar plot can be customized to view data in different ways. For example, instead of displaying frequencies on the Y-axis, relative frequencies can be displayed instead
+![Relative Frequency Barplot](Images/2_3_b_bar_plot.png)
+Also, bars cab via stacked above each other to show cumulative distribution along with regular distribution
+![Frequency Stacked Barplot](Images/2_3_c_bar_plot.png)
 
-### Data Measures
+![RelativeFrequency Stacked Barplot](Images/2_3_d_bar_plot.png)
 
-#### Central Tendency
+*Note: if categories count is large, bar plot became so dense and might be hard to digest*
 
--   Mode
--   Median
--   Mean
--   Variance
-
-#### Measure of variablity
-
-#### plots
-
--   Scatter Plot
--   Histogram
--   Box Plot
+(check snippets 2_3 above charts)
 
 ## Module Design
 
