@@ -253,6 +253,14 @@ The following are density plot examples (check Ch2_2.5.R for generating the belo
 ![Histogram](Images/2_5_a_densityt_plot.png)
 ![Histogram](Images/2_5_b_densityt_plot.png)
 
+#### Boxplot
+One of the best methods to describe numerical feature measure tendency and dispersion is **Boxplot**.
+It shows median, quartiles, minimum, maximum, and outlier values in the same plot easily, these info can be displayed via plot tooltop upon hovering on the box.
+
+The following are histogram examples (check Ch2_2.6.R for generating the below charts)
+![Boxplot](Images/2_6_a_box_plot.png)
+![Boxplot tooltip](Images/2_6_b_box_plot.png)
+
 ## Module Design
 
 -   Data have to be wrangled
