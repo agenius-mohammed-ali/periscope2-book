@@ -214,9 +214,14 @@ In next sections, the most famous features graphical representations will be dis
 
 #### Pie Chart
 
+The simplest method to visualize categorical data. It is a circle divided into sectors. Each sector represent a feature relative frequency (upon hovering over plot, both frequency and relative frequency will be shown). Sum of the sectors equal 100%
+
+![Frequency Barplot](Images/2_2_a_pie_chart.png)
+![Frequency Barplot](Images/2_2_b_pie_chart.png)
+
 #### Bar Plot
 
-The simplest method to visualize categorical data. Usually, each category is represented as a bar in the X-axis while bar height represents either category frequency (absolute or relative). The tallest bar is representing the *mode*.
+Another method to visualize categorical data. Usually, each category is represented as a bar in the X-axis while bar height represents either category frequency (absolute or relative). The tallest bar is representing the *mode*.
 
 ![Frequency Barplot](Images/2_3_a_bar_plot.png)
     
